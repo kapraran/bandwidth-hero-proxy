@@ -1,5 +1,5 @@
 const request = require('request')
-const pick = require('lodash').pick
+const pick = require('lodash.pick')
 const shouldCompress = require('./shouldCompress')
 const redirect = require('./redirect')
 const compress = require('./compress')
@@ -27,7 +27,7 @@ function proxy(req, res) {
       if (err || origin.statusCode >= 400) return redirect(req, res)
 
       copyHeaders(origin, res)
-      res.setHeader('content-encoding', 'identity')
+      res.header('content-encoding', 'identity')
       req.params.originType = origin.headers['content-type'] || ''
       req.params.originSize = buffer.length
 
